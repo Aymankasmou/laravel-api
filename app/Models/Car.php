@@ -9,12 +9,12 @@ class Car extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'id',
-        'make',
-        'model',
-        'year',
-        'price',
-        'description'
-    ];
+
+    protected $fillable = ['make', 'model', 'year', 'price', 'customer_id'];
+
+    // تعريف العلاقة مع العميل
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

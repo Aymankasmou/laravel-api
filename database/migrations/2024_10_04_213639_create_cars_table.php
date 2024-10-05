@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('make');
             $table->string('model');
-            $table->year('year');
-            $table->decimal('price', 10, 2);
-            $table->text('description')->nullable();
+            $table->integer('year');
+            $table->decimal('price', 8, 2);
+            $table->unsignedBigInteger('customer_id'); // المفتاح الخارجي للعميل
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade'); // الربط بجدول العملاء
             $table->timestamps();
         });
     }
